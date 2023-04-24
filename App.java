@@ -20,18 +20,24 @@ public class App {
             // input = con.readLine();
             input = scan.next();
 
+            // help function
             if (input.equals("help")) {
                 System.out.println("Type 'list' to see a list of items in your shopping cart");
-                System.out.println("Type 'add (name of item, etc...)' to add items into your shopping cart");
+                System.out.println("Type 'add (item 1, item 2, etc...)' to add items into your shopping cart");
                 System.out.println("Type 'delete (index of item)' to delete an item in your shopping cart");
-                System.out.println("Type 'done' to finish editing your shopping cart");
+                System.out.println("Type 'end' to finish editing your shopping cart");
             }
 
+            // list function
             if (input.equals("list")) {
+                
+                // if list is empty
                 if (shoppingList.isEmpty()) {
                     System.out.println("Your cart is empty");
+
+                // if list is not empty
                 } else {
-                    for (int i = 0; i <= shoppingList.size(); i++) {
+                    for (int i = 0; i < shoppingList.size(); i++) {
                         System.out.println((i + 1) + ". " + shoppingList.get(i));
                     }
                 }
