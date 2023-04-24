@@ -1,8 +1,8 @@
 package sg.edu.nus.iss;
 
-import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
@@ -12,10 +12,13 @@ public class App {
         String input = "";
         List<String> shoppingList = new ArrayList<>();
 
-        Console con = System.console();
+        // Console con = System.console();
+        Scanner scan = new Scanner(System.in);
 
-        while (!input.equals("done")) {
-            input = con.readLine();
+        // done function
+        while (!input.equals("end")) {
+            // input = con.readLine();
+            input = scan.next();
 
             if (input.equals("help")) {
                 System.out.println("Type 'list' to see a list of items in your shopping cart");
@@ -36,7 +39,8 @@ public class App {
 
         }
 
-        System.out.println("Your shopping list is complete. Bye bye!");
+        scan.close();
+        System.out.println("Thanks for shopping with us. Bye bye!");
 
     }
 }
