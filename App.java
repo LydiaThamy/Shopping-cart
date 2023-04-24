@@ -37,6 +37,58 @@ public class App {
                 }
             }
 
+            // add function
+            if (input.equals("add")) {
+                String itemInput = scan.nextLine();
+
+                // place items individually in a list
+                String[] item = itemInput.split(",");
+                
+                for (int i = 0; i < item.length; i++) {
+                    item[i] = item[i].trim().toLowerCase().replaceAll("\\p{P}", " ");
+                    
+                    // if item exists in a shopping cart
+                    if (shoppingList.contains(item[i])) {
+                        System.out.println("You have " + item[i] + " in your cart");
+                        
+                        // if item is new
+                        // item must not be a non-character
+                    } else if (!item[i].isBlank()) {
+                        shoppingList.add(item[i]);
+                        System.out.println(item[i] + " added to cart");
+                    }
+                }
+            }
+
+            // delete function
+            if (input.equals("delete")) {
+
+                try {
+                    Integer index = Integer.parseInt(scan.next());
+
+                    // if list is empty
+                    if (shoppingList.isEmpty()) {
+                        System.out.println("Your cart is empty");
+    
+                    // if incorrect index provided
+                    // index bigger than list size
+                    // index is less or equal to 0
+                    } else if (index > shoppingList.size() || index <= 0) {
+                        System.out.println("Incorrect item index");
+    
+                    // if correct index provided
+                    } else {
+                        System.out.println(shoppingList.get(index - 1) + " removed from cart");
+                        shoppingList.remove(index - 1);
+                    }
+
+                } catch (NumberFormatException nfe) {
+                    System.out.println("Please input a number to delete e.g. delete 1");
+                    // System.out.println(nfe);
+                }
+
+            }
+
         }
 
         scan.close();
